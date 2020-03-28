@@ -23,7 +23,7 @@ module.exports = async (req, res) => {
             session,
             response: {
                 text: answer,
-                end_session: true,
+                end_session: false
             },
         }
     ));

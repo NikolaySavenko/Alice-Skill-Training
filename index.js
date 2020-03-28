@@ -5,12 +5,15 @@ const { json } = require('micro');
 module.exports = async (req, res) => {
     const { request, session, version } = await json(req);
     let  answer;
+
+    let astroPhrase = "Бессовестный незнающий жалости человек который всем ставить колы";
+
     switch(request.original_utterance){
-        case "Кто такой астроном":
-            answer = "Бессовестный человек";
+        case "Кто такой астроном?":
+            answer = astroPhrase;
         break;
         default:
-            answer = "Ошибка";
+            answer = "Здравстуйте, что вы хотите узнать?";
         break;
     }
 
@@ -19,7 +22,7 @@ module.exports = async (req, res) => {
             version,
             session,
             response: {
-                text: answer || "Не задекларировано",
+                text: answer,
                 end_session: true,
             },
         }
